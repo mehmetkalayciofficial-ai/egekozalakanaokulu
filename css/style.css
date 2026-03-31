@@ -46,14 +46,6 @@
   --shadow-strong: 0 16px 56px rgba(62, 42, 30, 0.14);
 }
 
-/* --- Decorative SVG Patterns --- */
-:root {
-  --pattern-pinecone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60' fill='none'%3E%3Cpath d='M30 8c-2 3-5 5-5 9s3 6 5 8c2-2 5-4 5-8s-3-6-5-9z' fill='%23A1887F' opacity='.06'/%3E%3Cpath d='M30 22c-3 3-7 5-7 10s4 7 7 9c3-2 7-4 7-9s-4-7-7-10z' fill='%23A1887F' opacity='.04'/%3E%3C/svg%3E");
-  --pattern-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80' fill='none'%3E%3Cpath d='M15 65C15 40 40 15 65 15c0 25-25 50-50 50z' stroke='%236BBF59' stroke-width='.5' opacity='.07' fill='none'/%3E%3Cpath d='M15 65L65 15' stroke='%236BBF59' stroke-width='.3' opacity='.05'/%3E%3C/svg%3E");
-  --pattern-branch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40' fill='none'%3E%3Cpath d='M0 20Q30 20 60 15Q90 10 120 20' stroke='%23A1887F' stroke-width='.6' opacity='.06' fill='none'/%3E%3Ccircle cx='35' cy='17' r='3' fill='%236BBF59' opacity='.06'/%3E%3Ccircle cx='80' cy='13' r='2.5' fill='%236BBF59' opacity='.05'/%3E%3C/svg%3E");
-  --pattern-dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='%23A1887F' opacity='.08'/%3E%3C/svg%3E");
-}
-
 /* --- Reset & Base --- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -70,7 +62,6 @@ body {
   background-color: var(--cream);
   line-height: 1.7;
   overflow-x: hidden;
-  background-image: var(--pattern-dots);
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -352,9 +343,7 @@ p {
   position: relative;
   padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
   overflow: hidden;
-  background:
-    var(--pattern-pinecone),
-    linear-gradient(145deg,
+  background: linear-gradient(145deg,
       #FFF8EE 0%,
       #FDECD2 25%,
       #F5E6D0 50%,
@@ -676,20 +665,9 @@ p {
   position: relative;
 }
 
-.section--cream {
-  background-color: var(--cream);
-  background-image: var(--pattern-pinecone);
-}
-
-.section--white {
-  background-color: var(--white);
-  background-image: var(--pattern-leaf);
-}
-
-.section--warm {
-  background-color: var(--cream-dark);
-  background-image: var(--pattern-branch);
-}
+.section--cream { background: var(--cream); }
+.section--white { background: var(--white); }
+.section--warm { background: var(--cream-dark); }
 .section--brown {
   background: var(--brown-deep);
   color: var(--cream);
@@ -1508,5 +1486,89 @@ p {
 
 .img-block--aspect-1 {
   aspect-ratio: 1;
+}
+
+/* --- Decorative SVG Elements --- */
+.deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.deco--branch-tr {
+  top: -20px;
+  right: -20px;
+  width: clamp(120px, 15vw, 200px);
+  height: auto;
+}
+
+.deco--branch-bl {
+  bottom: -20px;
+  left: -10px;
+  width: clamp(100px, 12vw, 180px);
+  height: auto;
+}
+
+.deco--leaves {
+  bottom: 20px;
+  right: 5%;
+  width: clamp(80px, 10vw, 120px);
+  height: auto;
+  opacity: 0.8;
+}
+
+.deco--pinecone {
+  bottom: 40px;
+  left: 10%;
+  width: 40px;
+  height: auto;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .deco--branch-tr { width: 100px; top: -10px; right: -10px; }
+  .deco--branch-bl { width: 80px; bottom: -10px; }
+  .deco--leaves { width: 70px; }
+  .deco--pinecone { width: 30px; }
+}
+
+/* --- WhatsApp Floating Button --- */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+  z-index: 999;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
+}
+
+.whatsapp-btn svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+@media (max-width: 768px) {
+  .whatsapp-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 50px;
+    height: 50px;
+  }
+  .whatsapp-btn svg { width: 24px; height: 24px; }
 }
 
