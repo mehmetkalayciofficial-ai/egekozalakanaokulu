@@ -94,4 +94,39 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.add('active');
     }
   });
+
+  // --- Mobile Floating Seeds ---
+  if (window.innerWidth <= 1024) {
+    const drops = document.querySelectorAll('.hero__drop-item');
+    const anims = ['mFloat1', 'mFloat2', 'mFloat3'];
+    const positions = [
+      { right: '8%',  top: '6%',  size: 18 },
+      { right: '72%', top: '10%', size: 14 },
+      { right: '4%',  top: '32%', size: 12 },
+      { right: '82%', top: '48%', size: 16 },
+      { right: '10%', top: '62%', size: 11 },
+      { right: '76%', top: '76%', size: 14 },
+      { right: '5%',  top: '86%', size: 10 },
+      { right: '85%', top: '28%', size: 13 },
+    ];
+
+    drops.forEach((drop, i) => {
+      const pos = positions[i] || positions[0];
+      const anim = anims[i % 3];
+      const dur = 5.5 + (i * 0.7);
+      const delay = i * 0.4;
+
+      drop.style.cssText = `
+        position: absolute;
+        right: ${pos.right};
+        top: ${pos.top};
+        left: auto;
+        width: ${pos.size}px;
+        height: ${pos.size}px;
+        opacity: 0.65;
+        border-radius: 50% 50% 50% 0;
+        animation: ${anim} ${dur}s ease-in-out ${delay}s infinite;
+      `;
+    });
+  }
 });

@@ -349,10 +349,15 @@ p {
   position: relative;
   padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
   overflow: hidden;
-  background: linear-gradient(160deg, var(--cream) 0%, var(--cream-dark) 50%, var(--cream-deeper) 100%);
-  background-image:
+  background:
     var(--pattern-pinecone),
-    linear-gradient(160deg, var(--cream) 0%, var(--cream-dark) 50%, var(--cream-deeper) 100%);
+    linear-gradient(145deg,
+      #FFF8EE 0%,
+      #FDECD2 25%,
+      #F5E6D0 50%,
+      #E8F0E4 75%,
+      #FDF3E7 100%
+    );
 }
 
 /* Decorative branch in hero top-left */
@@ -396,13 +401,13 @@ p {
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
-  opacity: 0.12;
+  opacity: 0.18;
 }
 
 .hero__blob--1 {
   width: 500px;
   height: 500px;
-  background: var(--drop-orange);
+  background: var(--drop-yellow);
   top: -10%;
   right: -5%;
   animation: blobMove1 20s ease-in-out infinite;
@@ -411,7 +416,7 @@ p {
 .hero__blob--2 {
   width: 400px;
   height: 400px;
-  background: var(--drop-teal);
+  background: var(--drop-green);
   bottom: -10%;
   left: -5%;
   animation: blobMove2 18s ease-in-out infinite;
@@ -420,7 +425,7 @@ p {
 .hero__blob--3 {
   width: 300px;
   height: 300px;
-  background: var(--drop-pink);
+  background: var(--drop-orange);
   top: 40%;
   left: 30%;
   animation: blobMove3 22s ease-in-out infinite;
@@ -509,6 +514,7 @@ p {
   z-index: 0;
 }
 
+/* Desktop: drops appear with pop-in */
 .hero__drop-item {
   position: absolute;
   border-radius: 50% 50% 50% 0;
@@ -519,10 +525,10 @@ p {
 
 @keyframes heroDropIn {
   from { opacity: 0; transform: rotate(-45deg) scale(0) translateY(20px); }
-  to { opacity: 0.85; transform: rotate(-45deg) scale(1) translateY(0); }
+  to { opacity: 0.9; transform: rotate(-45deg) scale(1) translateY(0); }
 }
 
-/* Mobile: drops fall gently in a loop, positioned to NOT overlap text */
+/* Mobile: gentle floating seeds */
 @media (max-width: 1024px) {
   .hero__drops {
     width: 100%;
@@ -535,41 +541,37 @@ p {
     pointer-events: none;
   }
 
-  .hero__drops .hero__drop-item {
-    opacity: 0.6 !important;
+  .hero__drop-item {
+    animation: none !important;
+    opacity: 0.65 !important;
   }
 
-  /* Each drop gets its own float animation for organic feel */
-  .hero__drops .hero__drop-item:nth-child(1) { right: 8% !important; left: auto !important; top: 6% !important;  width: 18px !important; height: 18px !important; animation: dropFloat1 6s ease-in-out infinite !important; }
-  .hero__drops .hero__drop-item:nth-child(2) { right: 70% !important; left: auto !important; top: 12% !important; width: 14px !important; height: 14px !important; animation: dropFloat2 7s ease-in-out infinite !important; animation-delay: 0.8s !important; }
-  .hero__drops .hero__drop-item:nth-child(3) { right: 4% !important;  left: auto !important; top: 35% !important; width: 12px !important; height: 12px !important; animation: dropFloat3 8s ease-in-out infinite !important; animation-delay: 1.5s !important; }
-  .hero__drops .hero__drop-item:nth-child(4) { right: 80% !important; left: auto !important; top: 50% !important; width: 16px !important; height: 16px !important; animation: dropFloat1 7.5s ease-in-out infinite !important; animation-delay: 2s !important; }
-  .hero__drops .hero__drop-item:nth-child(5) { right: 10% !important; left: auto !important; top: 65% !important; width: 11px !important; height: 11px !important; animation: dropFloat2 6.5s ease-in-out infinite !important; animation-delay: 3s !important; }
-  .hero__drops .hero__drop-item:nth-child(6) { right: 75% !important; left: auto !important; top: 78% !important; width: 14px !important; height: 14px !important; animation: dropFloat3 7s ease-in-out infinite !important; animation-delay: 0.5s !important; }
-  .hero__drops .hero__drop-item:nth-child(7) { right: 3% !important;  left: auto !important; top: 88% !important; width: 10px !important; height: 10px !important; animation: dropFloat1 8.5s ease-in-out infinite !important; animation-delay: 4s !important; }
-  .hero__drops .hero__drop-item:nth-child(8) { right: 85% !important; left: auto !important; top: 30% !important; width: 13px !important; height: 13px !important; animation: dropFloat2 6s ease-in-out infinite !important; animation-delay: 1s !important; }
+  .hero__drop-item.mobile-float {
+    animation-fill-mode: both !important;
+    animation-timing-function: ease-in-out !important;
+    animation-iteration-count: infinite !important;
+  }
 }
 
-/* Gentle floating animations - 3 variants for organic variety */
-@keyframes dropFloat1 {
-  0%, 100% { transform: rotate(-45deg) translate(0, 0); opacity: 0.5; }
-  25%  { transform: rotate(-45deg) translate(8px, -12px); opacity: 0.7; }
-  50%  { transform: rotate(-45deg) translate(-5px, -20px); opacity: 0.6; }
-  75%  { transform: rotate(-45deg) translate(10px, -8px); opacity: 0.7; }
+@keyframes mFloat1 {
+  0%, 100% { transform: rotate(-45deg) translate(0, 0); }
+  25%  { transform: rotate(-50deg) translate(8px, -14px); }
+  50%  { transform: rotate(-40deg) translate(-6px, -24px); }
+  75%  { transform: rotate(-48deg) translate(10px, -10px); }
 }
 
-@keyframes dropFloat2 {
-  0%, 100% { transform: rotate(-45deg) translate(0, 0); opacity: 0.5; }
-  25%  { transform: rotate(-45deg) translate(-10px, -8px); opacity: 0.65; }
-  50%  { transform: rotate(-45deg) translate(6px, -18px); opacity: 0.7; }
-  75%  { transform: rotate(-45deg) translate(-8px, -5px); opacity: 0.55; }
+@keyframes mFloat2 {
+  0%, 100% { transform: rotate(-45deg) translate(0, 0); }
+  30%  { transform: rotate(-40deg) translate(-12px, -10px); }
+  60%  { transform: rotate(-50deg) translate(8px, -20px); }
+  80%  { transform: rotate(-42deg) translate(-4px, -6px); }
 }
 
-@keyframes dropFloat3 {
-  0%, 100% { transform: rotate(-45deg) translate(0, 0); opacity: 0.45; }
-  30%  { transform: rotate(-45deg) translate(12px, -15px); opacity: 0.7; }
-  60%  { transform: rotate(-45deg) translate(-6px, -10px); opacity: 0.6; }
-  80%  { transform: rotate(-45deg) translate(4px, -22px); opacity: 0.65; }
+@keyframes mFloat3 {
+  0%, 100% { transform: rotate(-45deg) translate(0, 0); }
+  20%  { transform: rotate(-48deg) translate(6px, -18px); }
+  50%  { transform: rotate(-42deg) translate(-10px, -12px); }
+  75%  { transform: rotate(-46deg) translate(12px, -22px); }
 }
 
 /* --- Buttons --- */
