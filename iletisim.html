@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İletişim | Ege Kozalak Anaokulu</title>
+  <meta name="description" content="Ege Kozalak Anaokulu ile iletişime geçin. Adres, telefon ve iletişim formu.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+
+  <div class="page-progress"></div>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/logo.png" alt="Ege Kozalak Anaokulu Logo">
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Ana Sayfa</a>
+        <a href="hakkimizda.html" class="nav__link">Hakkımızda</a>
+        <a href="egitim-programimiz.html" class="nav__link">Eğitim Programımız</a>
+        <a href="okulumuz.html" class="nav__link">Okulumuz</a>
+        <a href="okul-isleyisi.html" class="nav__link">Okul İşleyişi</a>
+        <a href="rehberlik.html" class="nav__link">Rehberlik</a>
+        <a href="iletisim.html" class="nav__link">İletişim</a>
+      </div>
+      <button class="nav__burger" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__content reveal">
+        <span class="section-label">Bize Ulaşın</span>
+        <h1 class="page-hero__title">İletişim</h1>
+        <p class="page-hero__subtitle">Okulumuz hakkında bilgi almak, kayıt süreci veya herhangi bir konuda bize ulaşabilirsiniz.</p>
+      </div>
+    </div>
+    <div class="drop drop--lg drop--float" style="background: var(--drop-pink); top: 20%; right: 10%; animation-delay: 0s;" aria-hidden="true"></div>
+    <div class="drop drop--md drop--float" style="background: var(--drop-blue); top: 55%; right: 16%; animation-delay: 2s;" aria-hidden="true"></div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="split">
+        <div class="reveal">
+          <h2 class="mb-32">Bize Yazın</h2>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Mesajınız gönderildi! En kısa sürede size dönüş yapacağız.');">
+            <div class="grid grid--2">
+              <div class="form-group">
+                <label for="name">Ad Soyad</label>
+                <input type="text" id="name" name="name" required placeholder="Adınız Soyadınız">
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" placeholder="05XX XXX XX XX">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">E-posta</label>
+              <input type="email" id="email" name="email" required placeholder="ornek@email.com">
+            </div>
+            <div class="form-group">
+              <label for="subject">Konu</label>
+              <input type="text" id="subject" name="subject" placeholder="Mesajınızın konusu">
+            </div>
+            <div class="form-group">
+              <label for="message">Mesajınız</label>
+              <textarea id="message" name="message" required placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary">Gönder</button>
+          </form>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <h3 class="mb-24">İletişim Bilgileri</h3>
+          <div class="contact-info mb-32">
+            <div class="contact-info__item">
+              <div class="contact-info__icon">📍</div>
+              <div class="contact-info__text">
+                <strong>Adres</strong>
+                <span>Muammer Akar Mahallesi 46 Sokak No:31<br>Göztepe - Karabağlar / İZMİR</span>
+              </div>
+            </div>
+            <div class="contact-info__item">
+              <div class="contact-info__icon">📞</div>
+              <div class="contact-info__text">
+                <strong>Telefon</strong>
+                <span>0553 805 56 25</span>
+              </div>
+            </div>
+            <div class="contact-info__item">
+              <div class="contact-info__icon">✉️</div>
+              <div class="contact-info__text">
+                <strong>E-posta</strong>
+                <span>info@ozelegekozalakanaokulu.com</span>
+              </div>
+            </div>
+            <div class="contact-info__item">
+              <div class="contact-info__icon">🕘</div>
+              <div class="contact-info__text">
+                <strong>Çalışma Saatleri</strong>
+                <span>Pazartesi - Cuma: 07:30 - 18:30</span>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="mb-16">Konum</h3>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3127.5!2d27.12!3d38.39!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDIzJzI0LjAiTiAyN8KwMDcnMTIuMCJF!5e0!3m2!1str!2str!4v1"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ege Kozalak Anaokulu Konum">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/logo.png" alt="Ege Kozalak Anaokulu">
+          <p>Her çocuğu, içinde keşfedilmeyi bekleyen yetenek tohumları taşıyan bir kozalak olarak görüyoruz.</p>
+        </div>
+        <div>
+          <h4 class="footer__title">Sayfalar</h4>
+          <a href="hakkimizda.html" class="footer__link">Hakkımızda</a>
+          <a href="egitim-programimiz.html" class="footer__link">Eğitim Programımız</a>
+          <a href="okulumuz.html" class="footer__link">Okulumuz</a>
+          <a href="okul-isleyisi.html" class="footer__link">Okul İşleyişi</a>
+        </div>
+        <div>
+          <h4 class="footer__title">Kurumsal</h4>
+          <a href="rehberlik.html" class="footer__link">Rehberlik</a>
+          <a href="iletisim.html" class="footer__link">İletişim</a>
+        </div>
+        <div>
+          <h4 class="footer__title">İletişim</h4>
+          <div class="footer__contact-item">
+            <span>📍</span>
+            <span>Muammer Akar Mah. 46 Sok. No:31 Göztepe, Karabağlar / İzmir</span>
+          </div>
+          <div class="footer__contact-item">
+            <span>📞</span>
+            <span>0553 805 56 25</span>
+          </div>
+          <div class="footer__contact-item">
+            <span>✉️</span>
+            <span>info@ozelegekozalakanaokulu.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; 2025 Özel Ege Kozalak Anaokulu. Tüm hakları saklıdır.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
