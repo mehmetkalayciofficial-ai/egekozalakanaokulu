@@ -173,28 +173,28 @@ p {
   top: 0;
   left: 0;
   right: 0;
-  height: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
+  height: auto;
   padding-top: env(safe-area-inset-top, 0px);
   z-index: 1000;
-  background: rgba(253, 248, 240, 0.85);
+  background: var(--cream);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: background 0.4s, box-shadow 0.4s, height 0.3s;
+  transition: background 0.4s, box-shadow 0.4s;
+  box-shadow: 0 1px 12px rgba(62, 42, 30, 0.05);
 }
 
 .nav.scrolled {
-  background: rgba(253, 248, 240, 0.95);
+  background: var(--cream);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 2px 20px rgba(62, 42, 30, 0.08);
-  height: 76px;
 }
 
 .nav__inner {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 40px);
-  height: 100%;
+  height: var(--nav-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
