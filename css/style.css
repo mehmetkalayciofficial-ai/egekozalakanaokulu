@@ -164,8 +164,12 @@ p {
   top: 0;
   left: 0;
   right: 0;
-  height: var(--nav-height);
+  height: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
   z-index: 1000;
+  background: rgba(253, 248, 240, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: background 0.4s, box-shadow 0.4s, height 0.3s;
 }
 
@@ -323,10 +327,11 @@ p {
 /* --- Hero Section (Home) --- */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   position: relative;
-  padding-top: var(--nav-height);
+  padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
   overflow: hidden;
   background: linear-gradient(160deg, var(--cream) 0%, var(--cream-dark) 50%, var(--cream-deeper) 100%);
 }
@@ -452,11 +457,30 @@ p {
   transform: translateY(-50%);
   width: 400px;
   height: 400px;
-  z-index: 1;
+  z-index: 0;
 }
 
 @media (max-width: 1024px) {
-  .hero__drops { display: none; }
+  .hero__drops {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: none;
+    pointer-events: none;
+  }
+
+  /* Scatter drops across the full hero background on mobile */
+  .hero__drops .hero__drop-item:nth-child(1) { top: 8% !important; left: auto !important; right: 10%; width: 36px !important; height: 36px !important; }
+  .hero__drops .hero__drop-item:nth-child(2) { top: 15% !important; left: auto !important; right: 55%; width: 28px !important; height: 28px !important; }
+  .hero__drops .hero__drop-item:nth-child(3) { top: 30% !important; left: auto !important; right: 5%; width: 22px !important; height: 22px !important; }
+  .hero__drops .hero__drop-item:nth-child(4) { top: 55% !important; left: auto !important; right: 80%; width: 30px !important; height: 30px !important; }
+  .hero__drops .hero__drop-item:nth-child(5) { top: 70% !important; left: auto !important; right: 12%; width: 26px !important; height: 26px !important; }
+  .hero__drops .hero__drop-item:nth-child(6) { top: 82% !important; left: auto !important; right: 60%; width: 32px !important; height: 32px !important; }
+  .hero__drops .hero__drop-item:nth-child(7) { top: 45% !important; left: auto !important; right: 3%; width: 24px !important; height: 24px !important; }
+  .hero__drops .hero__drop-item:nth-child(8) { top: 90% !important; left: auto !important; right: 30%; width: 28px !important; height: 28px !important; }
 }
 
 .hero__drop-item {
@@ -523,7 +547,7 @@ p {
 
 /* --- Page Hero (Inner Pages) --- */
 .page-hero {
-  padding: calc(var(--nav-height) + 60px) 0 60px;
+  padding: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 60px) 0 60px;
   position: relative;
   overflow: hidden;
   background: linear-gradient(160deg, var(--cream) 0%, var(--cream-dark) 100%);
