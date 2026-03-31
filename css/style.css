@@ -536,42 +536,40 @@ p {
   }
 
   .hero__drops .hero__drop-item {
-    animation: dropFall linear infinite !important;
-    opacity: 0.55 !important;
+    opacity: 0.6 !important;
   }
 
-  .hero__drops .hero__drop-item:nth-child(1) { left: 82% !important; top: auto !important; width: 20px !important; height: 20px !important; animation-duration: 7s !important; animation-delay: 0s !important; }
-  .hero__drops .hero__drop-item:nth-child(2) { left: 5% !important;  top: auto !important; width: 16px !important; height: 16px !important; animation-duration: 9s !important; animation-delay: 1s !important; }
-  .hero__drops .hero__drop-item:nth-child(3) { left: 90% !important; top: auto !important; width: 14px !important; height: 14px !important; animation-duration: 8s !important; animation-delay: 2s !important; }
-  .hero__drops .hero__drop-item:nth-child(4) { left: 12% !important; top: auto !important; width: 18px !important; height: 18px !important; animation-duration: 10s !important; animation-delay: 0.5s !important; }
-  .hero__drops .hero__drop-item:nth-child(5) { left: 75% !important; top: auto !important; width: 12px !important; height: 12px !important; animation-duration: 11s !important; animation-delay: 3s !important; }
-  .hero__drops .hero__drop-item:nth-child(6) { left: 2% !important;  top: auto !important; width: 16px !important; height: 16px !important; animation-duration: 8.5s !important; animation-delay: 1.5s !important; }
-  .hero__drops .hero__drop-item:nth-child(7) { left: 95% !important; top: auto !important; width: 13px !important; height: 13px !important; animation-duration: 9.5s !important; animation-delay: 4s !important; }
-  .hero__drops .hero__drop-item:nth-child(8) { left: 8% !important;  top: auto !important; width: 15px !important; height: 15px !important; animation-duration: 7.5s !important; animation-delay: 2.5s !important; }
+  /* Each drop gets its own float animation for organic feel */
+  .hero__drops .hero__drop-item:nth-child(1) { right: 8% !important; left: auto !important; top: 6% !important;  width: 18px !important; height: 18px !important; animation: dropFloat1 6s ease-in-out infinite !important; }
+  .hero__drops .hero__drop-item:nth-child(2) { right: 70% !important; left: auto !important; top: 12% !important; width: 14px !important; height: 14px !important; animation: dropFloat2 7s ease-in-out infinite !important; animation-delay: 0.8s !important; }
+  .hero__drops .hero__drop-item:nth-child(3) { right: 4% !important;  left: auto !important; top: 35% !important; width: 12px !important; height: 12px !important; animation: dropFloat3 8s ease-in-out infinite !important; animation-delay: 1.5s !important; }
+  .hero__drops .hero__drop-item:nth-child(4) { right: 80% !important; left: auto !important; top: 50% !important; width: 16px !important; height: 16px !important; animation: dropFloat1 7.5s ease-in-out infinite !important; animation-delay: 2s !important; }
+  .hero__drops .hero__drop-item:nth-child(5) { right: 10% !important; left: auto !important; top: 65% !important; width: 11px !important; height: 11px !important; animation: dropFloat2 6.5s ease-in-out infinite !important; animation-delay: 3s !important; }
+  .hero__drops .hero__drop-item:nth-child(6) { right: 75% !important; left: auto !important; top: 78% !important; width: 14px !important; height: 14px !important; animation: dropFloat3 7s ease-in-out infinite !important; animation-delay: 0.5s !important; }
+  .hero__drops .hero__drop-item:nth-child(7) { right: 3% !important;  left: auto !important; top: 88% !important; width: 10px !important; height: 10px !important; animation: dropFloat1 8.5s ease-in-out infinite !important; animation-delay: 4s !important; }
+  .hero__drops .hero__drop-item:nth-child(8) { right: 85% !important; left: auto !important; top: 30% !important; width: 13px !important; height: 13px !important; animation: dropFloat2 6s ease-in-out infinite !important; animation-delay: 1s !important; }
 }
 
-@keyframes dropFall {
-  0% {
-    top: -8%;
-    opacity: 0;
-    transform: rotate(-45deg) scale(0.7) translateX(0);
-  }
-  10% {
-    opacity: 0.6;
-    transform: rotate(-45deg) scale(1);
-  }
-  50% {
-    transform: rotate(-45deg) scale(1) translateX(15px);
-  }
-  90% {
-    opacity: 0.5;
-    transform: rotate(-45deg) scale(0.9) translateX(-10px);
-  }
-  100% {
-    top: 105%;
-    opacity: 0;
-    transform: rotate(-45deg) scale(0.6) translateX(5px);
-  }
+/* Gentle floating animations - 3 variants for organic variety */
+@keyframes dropFloat1 {
+  0%, 100% { transform: rotate(-45deg) translate(0, 0); opacity: 0.5; }
+  25%  { transform: rotate(-45deg) translate(8px, -12px); opacity: 0.7; }
+  50%  { transform: rotate(-45deg) translate(-5px, -20px); opacity: 0.6; }
+  75%  { transform: rotate(-45deg) translate(10px, -8px); opacity: 0.7; }
+}
+
+@keyframes dropFloat2 {
+  0%, 100% { transform: rotate(-45deg) translate(0, 0); opacity: 0.5; }
+  25%  { transform: rotate(-45deg) translate(-10px, -8px); opacity: 0.65; }
+  50%  { transform: rotate(-45deg) translate(6px, -18px); opacity: 0.7; }
+  75%  { transform: rotate(-45deg) translate(-8px, -5px); opacity: 0.55; }
+}
+
+@keyframes dropFloat3 {
+  0%, 100% { transform: rotate(-45deg) translate(0, 0); opacity: 0.45; }
+  30%  { transform: rotate(-45deg) translate(12px, -15px); opacity: 0.7; }
+  60%  { transform: rotate(-45deg) translate(-6px, -10px); opacity: 0.6; }
+  80%  { transform: rotate(-45deg) translate(4px, -22px); opacity: 0.65; }
 }
 
 /* --- Buttons --- */
