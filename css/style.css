@@ -1488,6 +1488,35 @@ p {
   aspect-ratio: 1;
 }
 
+/* Cloud overlay to mask building sides */
+.img-block--clouds::before,
+.img-block--clouds::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.img-block--clouds::before {
+  left: -5%;
+  top: 5%;
+  width: 35%;
+  height: 90%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 400' fill='white'%3E%3Cellipse cx='80' cy='80' rx='90' ry='60' opacity='.92'/%3E%3Cellipse cx='60' cy='150' rx='80' ry='55' opacity='.88'/%3E%3Cellipse cx='85' cy='220' rx='95' ry='65' opacity='.9'/%3E%3Cellipse cx='55' cy='300' rx='75' ry='50' opacity='.85'/%3E%3Cellipse cx='75' cy='360' rx='85' ry='55' opacity='.88'/%3E%3C/svg%3E");
+  background-position: left center;
+}
+
+.img-block--clouds::after {
+  right: -5%;
+  top: 0%;
+  width: 35%;
+  height: 95%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 400' fill='white'%3E%3Cellipse cx='120' cy='60' rx='95' ry='55' opacity='.9'/%3E%3Cellipse cx='140' cy='140' rx='85' ry='60' opacity='.88'/%3E%3Cellipse cx='115' cy='230' rx='100' ry='70' opacity='.92'/%3E%3Cellipse cx='135' cy='320' rx='80' ry='55' opacity='.86'/%3E%3Cellipse cx='125' cy='380' rx='90' ry='50' opacity='.9'/%3E%3C/svg%3E");
+  background-position: right center;
+}
+
 /* --- Decorative SVG Elements --- */
 .deco {
   position: absolute;
