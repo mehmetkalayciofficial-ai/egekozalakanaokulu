@@ -141,6 +141,59 @@ document.addEventListener('DOMContentLoaded', () => {
   // DECORATIVE ELEMENTS - branches, leaves, pinecones
   // =============================================
   addDecorations();
+
+  // =============================================
+  // LIGHTBOX for Gallery
+  // =============================================
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    const lbImg = lightbox.querySelector('.lightbox__img');
+    const lbClose = lightbox.querySelector('.lightbox__close');
+    const lbPrev = lightbox.querySelector('.lightbox__prev');
+    const lbNext = lightbox.querySelector('.lightbox__next');
+    const galleryItems = document.querySelectorAll('.gallery__item img');
+    let currentIdx = 0;
+
+    function openLightbox(idx) {
+      currentIdx = idx;
+      lbImg.src = galleryItems[idx].src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    galleryItems.forEach((img, i) => {
+      img.parentElement.addEventListener('click', () => openLightbox(i));
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    lbPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIdx = (currentIdx - 1 + galleryItems.length) % galleryItems.length;
+      lbImg.src = galleryItems[currentIdx].src;
+    });
+
+    lbNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIdx = (currentIdx + 1) % galleryItems.length;
+      lbImg.src = galleryItems[currentIdx].src;
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lbPrev.click();
+      if (e.key === 'ArrowRight') lbNext.click();
+    });
+  }
 });
 
 /* --- Seed Rise Animation (injected via style tag) --- */
